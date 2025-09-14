@@ -3,63 +3,346 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website</title>
+    <title>Candy Xie - Portfolio</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            max-width: 500px;
-            margin: 40px auto;
-            padding: 32px 24px;
-            background: #ffe4ec;
-            border-radius: 16px;
-            box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #ffe4ec 0%, #f8d7da 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .hero {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
         }
         .headshot {
-            display: block;
-            width: 120px;
-            height: 120px;
+            width: 150px;
+            height: 150px;
             object-fit: cover;
             border-radius: 50%;
-            margin: 0 auto 18px auto;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            border: 3px solid #f8bbd0;
-            background: #fff;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            border: 4px solid #f8bbd0;
+            display: block;
         }
         h1 {
             color: #d16ba5;
-            text-align: center;
+            font-size: 2.5em;
             margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .subtitle {
+            color: #6d597a;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            font-weight: 300;
         }
         .intro {
-            text-align: center;
             color: #6d597a;
             font-size: 1.1em;
-            margin-bottom: 22px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        a.cv-link {
+        .cv-link {
             display: inline-block;
-            margin-top: 18px;
-            padding: 10px 22px;
+            padding: 12px 30px;
             background: #d16ba5;
             color: #fff;
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: 8px;
             font-weight: 500;
-            box-shadow: 0 1px 4px rgba(209,107,165,0.08);
-            transition: background 0.2s;
+            box-shadow: 0 4px 15px rgba(209,107,165,0.3);
+            transition: all 0.3s ease;
+            margin: 10px;
         }
-        a.cv-link:hover {
+        .cv-link:hover {
             background: #b565a7;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(209,107,165,0.4);
+        }
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+        .section h2 {
+            color: #d16ba5;
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #d16ba5, #b565a7);
+            border-radius: 2px;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .project-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(209,107,165,0.1);
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            border-color: rgba(209,107,165,0.3);
+        }
+        .project-card h3 {
+            color: #d16ba5;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        .project-card p {
+            color: #6d597a;
+            margin-bottom: 15px;
+        }
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        .tag {
+            background: rgba(209,107,165,0.1);
+            color: #d16ba5;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+        .project-links {
+            display: flex;
+            gap: 10px;
+        }
+        .project-link {
+            color: #d16ba5;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 6px 12px;
+            border: 1px solid #d16ba5;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+        .project-link:hover {
+            background: #d16ba5;
+            color: #fff;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .nav-link {
+            color: #d16ba5;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.7);
+        }
+        .nav-link:hover {
+            background: #d16ba5;
+            color: #fff;
+        }
+        .contact-info {
+            text-align: center;
+            color: #6d597a;
+        }
+        .contact-info a {
+            color: #d16ba5;
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .hero, .section {
+                padding: 25px;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+            }
         }
     </style>
 </head>
 <body>
-    <img src="assets/images/headshot.jpg" alt="Headshot" class="headshot">
-    <h1>Candy Xie</h1>
-    <div class="intro">
-        Hi! I'm Candy Xie, currently an undergrad at NYU Tandon. While I am still figuring out with my future, I am fascinated by the intersections of engineering,
-        business, music and neuroscience. For now, I love building things and connecting unrelated stuff together.
-        Outside school, I dance, swim, city-walk and run. I am proud to say I play the recorder professionally and I am also a musician and multi-instrumentalist.
-    <a class="cv-link" href="assets/Resume_CandyXie_2025Sep.pdf" target="_blank">Download My CV (PDF)</a>
+    <div class="container">
+        <nav class="nav-links">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#work" class="nav-link">Work Projects</a>
+            <a href="#personal" class="nav-link">Personal Projects</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <section id="about" class="hero">
+            <img src="assets/images/111F417C-4CA6-45AE-9B92-23C87B318B22_4_5005_c.jpeg" alt="Candy Xie" class="headshot">
+            <h1>Candy Xie</h1>
+            <p class="subtitle">NYU Tandon Student • Engineer • Musician • Builder</p>
+            <div class="intro">
+                Hi! I'm Candy Xie, currently an undergrad at NYU Tandon. While I am still figuring out my future, I am fascinated by the intersections of engineering, business, music and neuroscience. For now, I love building things and connecting unrelated stuff together.
+                <br><br>
+                Outside school, I dance, swim, city-walk and run. I am proud to say I play the recorder professionally and I am also a musician and multi-instrumentalist.
+            </div>
+            <a class="cv-link" href="assets/Resume_CandyXie_2025Sep.pdf" target="_blank">Download My CV (PDF)</a>
+        </section>
+
+        <section id="work" class="section">
+            <h2>Work & Academic Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Project Title</h3>
+                    <p>Description of your work project. This could be from internships, research, or significant academic projects.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Research</span>
+                        <span class="tag">Data Analysis</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Project</a>
+                        <a href="#" class="project-link">GitHub</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Another Work Project</h3>
+                    <p>Add details about another professional or academic project you've worked on.</p>
+                    <div class="project-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Web Development</span>
+                        <span class="tag">UI/UX</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Live Demo</a>
+                        <a href="#" class="project-link">Code</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="personal" class="section">
+            <h2>Personal Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Music & Performance</h3>
+                    <p>Professional recorder performances and multi-instrumental compositions. Exploring the intersection of technology and music.</p>
+                    <div class="project-tags">
+                        <span class="tag">Music</span>
+                        <span class="tag">Performance</span>
+                        <span class="tag">Composition</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Listen</a>
+                        <a href="#" class="project-link">Videos</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Creative Projects</h3>
+                    <p>Personal creative endeavors combining engineering, art, and music. Building things that connect unrelated concepts.</p>
+                    <div class="project-tags">
+                        <span class="tag">Creative</span>
+                        <span class="tag">Interdisciplinary</span>
+                        <span class="tag">Art</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Explore</a>
+                        <a href="#" class="project-link">Gallery</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Learning Adventures</h3>
+                    <p>Documentation of my exploration in neuroscience, business, and engineering intersections. Side projects and experiments.</p>
+                    <div class="project-tags">
+                        <span class="tag">Learning</span>
+                        <span class="tag">Experiments</span>
+                        <span class="tag">Documentation</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Read More</a>
+                        <a href="#" class="project-link">Blog</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>Let's Connect</h2>
+            <div class="contact-info">
+                <p>I'm always interested in connecting with fellow builders, musicians, and curious minds!</p>
+                <p>Feel free to reach out for collaborations, conversations, or just to say hi.</p>
+                <br>
+                <p>
+                    <a href="mailto:your.email@example.com">your.email@example.com</a> • 
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a> • 
+                    <a href="https://github.com/candpixie" target="_blank">GitHub</a>
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
