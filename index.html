@@ -1,41 +1,716 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>candpixie — Personal site</title>
-    <meta name="description" content="Personal website of candpixie" />
-    <link rel="stylesheet" href="/style.css" />
-  </head>
-  <body>
-    <main class="site">
-      <header>
-        <h1>Welcome — candpixie</h1>
-        <div class="meta">A small personal website hosted with GitHub Pages</div>
-        <nav class="nav">
-          <a href="/">Home</a>
-          <a href="/about.html">About</a>
-          <a href="/projects.html">Projects</a>
-          <a href="https://github.com/candpixie/candpixie.github.io" target="_blank" rel="noopener">Repo</a>
-        </nav>
-      </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candy Xie | Chemical Engineer & Tech Innovator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      <section class="content">
-        <p>This is the initial deploy for <strong>candpixie.github.io</strong>. If you see this page it means the repository has content and can be published by GitHub Pages.</p>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #4a4a4a;
+            background: linear-gradient(135deg, #fef1f5 0%, #f5f5f5 50%, #fef1f5 100%);
+            min-height: 100vh;
+        }
 
-        <h2>Next steps you can do (or I can continue for you):</h2>
-        <ul>
-          <li>Customize this index.html with your content (bio, links, projects).</li>
-          <li>If you have a static site generator or frontend framework, add the build and deploy files (package.json, workflow) and I can add those for you.</li>
-          <li>Enable Pages in repo Settings → Pages, choose main branch / root as the source. If required, make the repo public.</li>
-        </ul>
+        html {
+            scroll-behavior: smooth;
+        }
 
-        <p class="hint">If you want me to publish automatically on each push, tell me which framework you use (plain HTML, React, Vite, Next.js, Hugo, Eleventy).</p>
-      </section>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-      <footer>
-        <p>Published by candpixie. </p>
-      </footer>
-    </main>
-  </body>
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, rgba(255, 182, 217, 0.4) 0%, rgba(200, 200, 200, 0.4) 100%);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .header-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 24px;
+            max-width: 700px;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info a {
+            color: #666;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: #ffb3d9;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-links a {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-links a:hover {
+            background: #ffb3d9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 179, 217, 0.4);
+        }
+
+        .header-icon {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(255, 179, 217, 0.3) 0%, rgba(180, 180, 180, 0.3) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            border: 4px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        section:nth-child(even) {
+            background: #fff;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .section-header svg {
+            width: 40px;
+            height: 40px;
+            color: #ff69b4;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        /* Card Styles */
+        .card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 32px;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #ffb3d9;
+            margin-bottom: 24px;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(255, 179, 217, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .card h3 {
+            font-size: 1.75rem;
+            color: #ff69b4;
+            margin-bottom: 8px;
+        }
+
+        .card .role {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .card .period {
+            color: #999;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-top: 16px;
+        }
+
+        .card li {
+            margin-bottom: 12px;
+            padding-left: 24px;
+            position: relative;
+            color: #555;
+        }
+
+        .card li:before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #ffb3d9;
+            font-size: 1.2em;
+        }
+
+        /* Featured Card */
+        .featured-card {
+            background: linear-gradient(135deg, rgba(255, 179, 217, 0.3) 0%, rgba(200, 200, 200, 0.3) 100%);
+            padding: 48px;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 179, 217, 0.3);
+        }
+
+        .featured-badge {
+            display: inline-block;
+            background: rgba(255, 179, 217, 0.5);
+            padding: 6px 16px;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .featured-card h3 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .featured-card p {
+            font-size: 1.15rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Tags */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 24px;
+        }
+
+        .tag {
+            background: #ffb3d9;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .tag.gray {
+            background: #d0d0d0;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .skill-card {
+            background: #fff;
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .skill-card h3 {
+            font-size: 1.3rem;
+            color: #ff69b4;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #ffb3d9 0%, #ffc9e3 100%);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 8px rgba(255, 179, 217, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, rgba(200, 200, 200, 0.4) 0%, rgba(255, 179, 217, 0.4) 100%);
+            padding: 48px 0;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        footer p {
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        footer a {
+            color: #555;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #ff69b4;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+            }
+
+            .card {
+                padding: 24px;
+            }
+
+            .featured-card {
+                padding: 32px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-text">
+                    <div class="badge">Engineer • Innovator • Creator</div>
+                    <h1>Candy Xie</h1>
+                    <p class="subtitle">Chemical Engineering student at NYU with a passion for innovation, STEM education, and creating meaningful impact through technology and science.</p>
+                    
+                    <div class="contact-info">
+                        <a href="mailto:candyxie@nyu.edu">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                            </svg>
+                            candyxie@nyu.edu
+                        </a>
+                        <a href="#">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            New York, NY
+                        </a>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://linkedin.com" target="_blank" title="LinkedIn">
+                            <svg width="24" height="24" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect width="4" height="12" x="2" y="9"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/candpixie" target="_blank" title="GitHub">
+                            <svg width="24" height="24" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                                <path d="M9 18c-4.51 2-5-2-7-2"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="header-icon">🌸</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Education Section -->
+    <section class="scroll-animate">
+        <div class="container">
+            <div class="section-header">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                </svg>
+                <h2>Education</h2>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>New York University, Tandon School of Engineering</h3>
+                        <p class="role">Bachelor of Science, Chemical and Biomolecular Engineering</p>
+                        <p class="role" style="color: #ff69b4;">Planned Minor: Computer Science</p>
+                    </div>
+                    <span class="period">Aug 2025 – May 2029</span>
+                </div>
+                <div class="tags">
+                    <span class="tag">HKSES Scholarship</span>
+                    <span class="tag gray">NYU Project Outreach</span>
+                    <span class="tag">HESS Social Media Head</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Venture -->
+    <section class="scroll-animate" style="background: #fff;">
+        <div class="container">
+            <div class="section-header">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="8" r="6"/>
+                    <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+                </svg>
+                <h2>Featured Venture</h2>
+            </div>
+
+            <div class="featured-card">
+                <span class="featured-badge">Current Project</span>
+                <div class="card-header">
+                    <div>
+                        <h3>MeloMed</h3>
+                        <p class="role">Founder & CEO</p>
+                    </div>
+                    <span class="period">Sep 2025 – Present</span>
+                </div>
+                <p>Building an AI-driven behavioral-wellness platform that fuses music, lyric analysis, and journaling to help Gen Z users understand and regulate emotions through data-driven reflection. Designing therapeutic-intelligence features with ethical safeguards.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="scroll-animate">
+        <div class="container">
+            <div class="section-header">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect width="20" height="14" x="2" y="7" rx="2" ry="2"/>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                </svg>
+                <h2>Experience</h2>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>Jane Street</h3>
+                        <p class="role">WiSE Program</p>
+                    </div>
+                    <span class="period">Jul 2025</span>
+                </div>
+                <ul>
+                    <li>Selected for competitive women in STEM program to develop insights on trading</li>
+                    <li>Gained exposure to quantitative trading through strategy games like Figgie and Estimathon</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>Spotlight Enterprises Limited</h3>
+                        <p class="role">Assistant Clubhouse Officer</p>
+                    </div>
+                    <span class="period">Jul 2025 – Aug 2025</span>
+                </div>
+                <ul>
+                    <li>Managed clubhouse documents and monitored facilities operations</li>
+                    <li>Acted as liaison between 1000+ residents and management</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>China Resources Cement</h3>
+                        <p class="role">Summer Intern</p>
+                    </div>
+                    <span class="period">Aug 2024</span>
+                </div>
+                <ul>
+                    <li>Shadowed on-site engineering operations at Redland Concrete</li>
+                    <li>Supported company-wide event coordination</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership & Research -->
+    <section class="scroll-animate" style="background: #fff;">
+        <div class="container">
+            <div class="section-header">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                    <path d="M2 12h20"/>
+                </svg>
+                <h2>Leadership & Research</h2>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>MedicSFacts</h3>
+                        <p class="role">Founder & President</p>
+                    </div>
+                    <span class="period">Dec 2022 – Dec 2024</span>
+                </div>
+                <ul>
+                    <li>Built international science educational initiative with 3,600+ readers across 4 continents</li>
+                    <li>Led team in creating newsletters, interviews, and social media campaigns</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>IEEE Young Engineers</h3>
+                        <p class="role">Researcher</p>
+                    </div>
+                    <span class="period">Apr 2023 – Jan 2025</span>
+                </div>
+                <ul>
+                    <li>Investigated light pollution impacts on local ecosystem and health from UNSDGs perspectives</li>
+                    <li>Published research paper on ResearchGate</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>Hong Kong Academy for Gifted Education</h3>
+                        <p class="role">Innovator</p>
+                    </div>
+                    <span class="period">May 2024 – Aug 2025</span>
+                </div>
+                <ul>
+                    <li>Designed rehabilitation product for stroke patients using Python, SketchUp, and 3D Printing</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="scroll-animate">
+        <div class="container">
+            <div class="section-header">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <polyline points="16 18 22 12 16 6"/>
+                    <polyline points="8 6 2 12 8 18"/>
+                </svg>
+                <h2>Skills & Interests</h2>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <polyline points="16 18 22 12 16 6"/>
+                            <polyline points="8 6 2 12 8 18"/>
+                        </svg>
+                        Technical Skills
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Machine Learning & AI</span>
+                        <span class="skill-tag">Data Analysis</span>
+                        <span class="skill-tag">3D Fabrication</span>
+                        <span class="skill-tag">Adobe Creative Suite</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3>
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                            <path d="M2 12h20"/>
+                        </svg>
+                        Languages
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">English (Fluent)</span>
+                        <span class="skill-tag">Cantonese (Fluent)</span>
+                        <span class="skill-tag">Mandarin (Fluent)</span>
+                        <span class="skill-tag">Spanish (Intermediate)</span>
+                    </div>
+                </div>
+
+                <div class="skill-card" style="grid-column: 1 / -1;">
+                    <h3>
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M9 18V5l12-2v13"/>
+                            <circle cx="6" cy="18" r="3"/>
+                            <circle cx="18" cy="16" r="3"/>
+                        </svg>
+                        Creative Interests
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">🎵 Recorder (Soloist & Composer)</span>
+                        <span class="skill-tag">🎻 Violin</span>
+                        <span class="skill-tag">🎹 Piano</span>
+                        <span class="skill-tag">🎼 Music Composition</span>
+                        <span class="skill-tag">🩰 Ballet</span>
+                        <span class="skill-tag">💃 Contemporary Dance</span>
+                        <span class="skill-tag">🏸 Badminton</span>
+                        <span class="skill-tag">🎤 Debate & Public Speaking</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p style="font-size: 1.1rem;">Open to opportunities in engineering, innovation, and STEM education</p>
+            <div class="footer-links">
+                <a href="mailto:candyxie@nyu.edu">Get in Touch</a>
+                <span style="color: #ccc;">|</span>
+                <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+                <span style="color: #ccc;">|</span>
+                <a href="https://github.com/candpixie" target="_blank">GitHub</a>
+            </div>
+            <p style="font-size: 0.9rem; color: #999;">© 2025 Candy Xie. Designed with creativity and passion.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
 </html>
