@@ -237,6 +237,14 @@
             animation: slideInRight 0.8s ease-out, float-icon 3s ease-in-out infinite;
             cursor: pointer;
             transition: all 0.3s;
+            overflow: hidden;
+        }
+
+        .header-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
         .header-icon:hover {
@@ -732,8 +740,8 @@
                     </div>
                 </div>
 
-                <div class="header-icon" title="Click me!">
-                    👩‍💻
+                <div class="header-icon">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" alt="Candy Xie Profile" id="profileImage">
                 </div>
             </div>
         </div>
@@ -1064,17 +1072,6 @@
         });
 
         const headerIcon = document.querySelector('.header-icon');
-        const emojis = ['👩‍💻', '🚀', '🎵', '🎨', '💡', '⚡', '🌟', '🎯'];
-        let emojiIndex = 0;
-
-        headerIcon.addEventListener('click', () => {
-            emojiIndex = (emojiIndex + 1) % emojis.length;
-            headerIcon.textContent = emojis[emojiIndex];
-            headerIcon.style.animation = 'none';
-            setTimeout(() => {
-                headerIcon.style.animation = 'slideInRight 0.8s ease-out, float-icon 3s ease-in-out infinite';
-            }, 10);
-        });
 
         let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
         let konamiIndex = 0;
