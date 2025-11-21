@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candy Xie</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #4a4a4a;
+            background: linear-gradient(135deg, #fef1f5 0%, #f5f5f5 50%, #fef1f5 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Floating particles background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 179, 217, 0.3);
+            border-radius: 50%;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, rgba(255, 182, 217, 0.4) 0%, rgba(200, 200, 200, 0.4) 100%);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 48px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-text {
+            flex: 1;
+            min-width: 300px;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+            margin-bottom: 24px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 16px;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 24px;
+            max-width: 700px;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info a {
+            color: #666;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .contact-info a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ffb3d9;
+            transition: width 0.3s;
+        }
+
+        .contact-info a:hover::after {
+            width: 100%;
+        }
+
+        .contact-info a:hover {
+            color: #ffb3d9;
+            transform: translateY(-2px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-links a {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .social-links a svg {
+            fill: #ffb3d9;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #ffb3d9;
+            transform: translateY(-4px) rotate(5deg);
+            box-shadow: 0 8px 20px rgba(255, 179, 217, 0.4);
+        }
+
+        .social-links a:hover svg {
+            fill: white;
+            transform: scale(1.1);
+        }
+
+        .header-icon {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(255, 179, 217, 0.3) 0%, rgba(180, 180, 180, 0.3) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            border: 4px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            position: relative;
+            animation: slideInRight 0.8s ease-out, float-icon 3s ease-in-out infinite;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .header-icon:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 12px 48px rgba(255, 179, 217, 0.3);
+        }
+
+        @keyframes float-icon {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            padding: 16px 24px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffb3d9;
+            border-radius: 8px;
+            transform: scaleX(0);
+            transition: transform 0.3s;
+            z-index: -1;
+        }
+
+        nav a:hover::before {
+            transform: scaleX(1);
+        }
+
+        nav a:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        nav a svg {
+            transition: transform 0.3s;
+        }
+
+        nav a:hover svg {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        section:nth-child(even) {
+            background: #fff;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .section-header svg {
+            width: 40px;
+            height: 40px;
+            color: #ff69b4;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        /* Card Styles */
+        .card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 32px;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #ffb3d9;
+            margin-bottom: 24px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 179, 217, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(255, 179, 217, 0.3);
+            border-left-width: 8px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .card h3 {
+            font-size: 1.75rem;
+            color: #ff69b4;
+            margin-bottom: 8px;
+            transition: all 0.3s;
+        }
+
+        .card:hover h3 {
+            transform: translateX(10px);
+        }
+
+        .card .role {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .card .period {
+            color: #999;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-top: 16px;
+        }
+
+        .card li {
+            margin-bottom: 12px;
+            padding-left: 24px;
+            position: relative;
+            color: #555;
+            opacity: 0;
+            animation: fadeInUp 0.5s forwards;
+        }
+
+        .card:hover li {
+            animation: fadeInUp 0.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+        }
+
+        .card li:nth-child(1) { animation-delay: 0.1s; }
+        .card li:nth-child(2) { animation-delay: 0.2s; }
+        .card li:nth-child(3) { animation-delay: 0.3s; }
+
+        .card li:before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #ffb3d9;
+            font-size: 1.2em;
+            animation: pulse 2s infinite;
+        }
+
+        /* Featured Card */
+        .featured-card {
+            background: linear-gradient(135deg, rgba(255, 179, 217, 0.3) 0%, rgba(200, 200, 200, 0.3) 100%);
+            padding: 48px;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 179, 217, 0.3);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-card::after {
+            content: '★';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 4rem;
+            color: rgba(255, 179, 217, 0.2);
+            animation: spin 10s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .featured-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 16px 48px rgba(255, 179, 217, 0.3);
+        }
+
+        .featured-badge {
+            display: inline-block;
+            background: #ff69b4;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 32px;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid #ffb3d9;
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(255, 179, 217, 0.3);
+        }
+
+        .skill-card h3 {
+            font-size: 1.25rem;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .skill-card svg {
+            color: #ff69b4;
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover svg {
+            transform: rotate(360deg);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, rgba(255, 179, 217, 0.2) 0%, rgba(200, 200, 200, 0.2) 100%);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #555;
+            border: 1px solid rgba(255, 179, 217, 0.3);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .skill-tag:hover {
+            background: #ffb3d9;
+            color: white;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 4px 12px rgba(255, 179, 217, 0.4);
+        }
+
+        /* Progress bars for skills */
+        .skill-progress {
+            margin-bottom: 20px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 179, 217, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ffb3d9, #ff69b4);
+            border-radius: 10px;
+            transition: width 1.5s ease-out;
+            width: 0;
+        }
+
+        .skill-card.visible .progress-fill {
+            width: var(--progress);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, rgba(255, 182, 217, 0.4) 0%, rgba(200, 200, 200, 0.4) 100%);
+            padding: 48px 0;
+            text-align: center;
+            color: #666;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin: 24px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #ff69b4;
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff1493;
+            transition: width 0.3s;
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        .footer-links a:hover {
+            color: #ff1493;
+            transform: translateY(-2px);
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #ffb3d9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(255, 179, 217, 0.4);
+        }
+
+        .scroll-top svg {
+            fill: white;
+        }
+
+        /* Animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-animate.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Easter egg - konami code */
+        .konami-activated {
+            animation: rainbow 3s linear infinite;
+        }
+
+        @keyframes rainbow {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .header-icon {
+                width: 150px;
+                height: 150px;
+                font-size: 4rem;
+            }
+
+            nav .container {
+                gap: 16px;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particles background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-text">
+                    <div class="badge">🎵 Builder | Founder | Musician</div>
+                    <h1>Candy Xie</h1>
+                    <p class="subtitle">Chemical Engineering @ NYU Tandon | Building MeloMed | Music Tech Enthusiast</p>
+                    
+                    <div class="contact-info">
+                        <a href="mailto:candyxie@nyu.edu">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            candyxie@nyu.edu
+                        </a>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/candy-xie" target="_blank" title="LinkedIn">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/candpixie" target="_blank" title="GitHub">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="header-icon" title="Click me!">
+                    👩‍💻
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <a href="#venture">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+                Featured
+            </a>
+            <a href="#experience">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect width="20" height="14" x="2" y="7" rx="2" ry="2"/>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                </svg>
+                Experience
+            </a>
+            <a href="#leadership">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                    <path d="M2 12h20"/>
+                </svg>
+                Leadership
+            </a>
+            <a href="#skills">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <polyline points="16 18 22 12 16 6"/>
+                    <polyline points="8 6 2 12 8 18"/>
+                </svg>
+                Skills
+            </a>
+            <a href="photography.html">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                    <circle cx="12" cy="13" r="4"/>
+                </svg>
+                Photography
+            </a>
+        </div>
+    </nav>
+
+    <!-- Featured Venture -->
+    <section id="venture" class="scroll-animate">
+        <div class="container">
+            <div class="section-header">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+                <h2>Featured Venture</h2>
+            </div>
+
+            <div class="featured-card">
+                <span class="featured-badge">🏆 NYU WIBE Shark Tank Winner 2025</span>
+                <div class="card-header">
+                    <div>
+                        <h3>MeloMed</h3>
+                        <p class="role">Founder & CEO</p>
+                    </div>
+                    <span class="period">Jun 2025 – Present</span>
+                </div>
+                <p>Building an AI-driven behavioral-wellness platform that fuses music, lyric analysis, and journaling to help Gen Z users understand and regulate emotions through data-driven reflection. Designing therapeutic-intelligence features with ethical safeguards.</p>
+                <ul>
+                    <li>📧 candy@melomed.io</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="scroll-animate">
+        <div class="container">
+            <div class="section-header">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect width="20" height="14" x="2" y="7" rx="2" ry="2"/>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                </svg>
+                <h2>Experience</h2>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>Jane Street</h3>
+                        <p class="role">WiSE Program Participant</p>
+                    </div>
+                    <span class="period">Jul 2025</span>
+                </div>
+                <ul>
+                    <li>Selected for competitive women in STEM program to develop insights on trading</li>
+                    <li>Gained exposure to quantitative trading through strategy games like Figgie and Estimathon</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>Spotlight Enterprises Limited</h3>
+                        <p class="role">Assistant Clubhouse Officer</p>
+                    </div>
+                    <span class="period">Jul 2025 – Aug 2025</span>
+                </div>
+                <ul>
+                    <li>Managed clubhouse documents and monitored facilities operations</li>
+                    <li>Acted as liaison between 1000+ residents and management</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>China Resources Cement</h3>
+                        <p class="role">Summer Intern</p>
+                    </div>
+                    <span class="period">Aug 2024</span>
+                </div>
+                <ul>
+                    <li>Shadowed on-site engineering operations at Redland Concrete</li>
+                    <li>Supported company-wide event coordination</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership & Research -->
+    <section id="leadership" class="scroll-animate" style="background: #fff;">
+        <div class="container">
+            <div class="section-header">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                    <path d="M2 12h20"/>
+                </svg>
+                <h2>Leadership & Research</h2>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>MedicSFacts</h3>
+                        <p class="role">Founder & President</p>
+                    </div>
+                    <span class="period">Dec 2022 – Dec 2024</span>
+                </div>
+                <ul>
+                    <li>Built international science educational initiative with 3,600+ readers across 4 continents</li>
+                    <li>Led team in creating newsletters, interviews, and social media campaigns</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>IEEE Young Engineers</h3>
+                        <p class="role">Researcher</p>
+                    </div>
+                    <span class="period">Apr 2023 – Jan 2025</span>
+                </div>
+                <ul>
+                    <li>Investigated light pollution impacts on local ecosystem and health from UNSDGs perspectives</li>
+                    <li>Published research paper on ResearchGate</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>Hong Kong Academy for Gifted Education</h3>
+                        <p class="role">Innovator</p>
+                    </div>
+                    <span class="period">May 2024 – Aug 2025</span>
+                </div>
+                <ul>
+                    <li>Designed rehabilitation product for stroke patients using Python, SketchUp, and 3D Printing</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="scroll-animate">
+        <div class="container">
+            <div class="section-header">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <polyline points="16 18 22 12 16 6"/>
+                    <polyline points="8 6 2 12 8 18"/>
+                </svg>
+                <h2>Skills & Interests</h2>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <polyline points="16 18 22 12 16 6"/>
+                            <polyline points="8 6 2 12 8 18"/>
+                        </svg>
+                        Technical Skills
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Machine Learning & AI</span>
+                        <span class="skill-tag">Data Analysis</span>
+                        <span class="skill-tag">3D Fabrication</span>
+                        <span class="skill-tag">Adobe Creative Suite</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3>
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                            <path d="M2 12h20"/>
+                        </svg>
+                        Languages
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">English (Fluent)</span>
+                        <span class="skill-tag">Cantonese (Fluent)</span>
+                        <span class="skill-tag">Mandarin (Fluent)</span>
+                        <span class="skill-tag">Spanish (Intermediate)</span>
+                    </div>
+                </div>
+
+                <div class="skill-card" style="grid-column: 1 / -1;">
+                    <h3>
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M9 18V5l12-2v13"/>
+                            <circle cx="6" cy="18" r="3"/>
+                            <circle cx="18" cy="16" r="3"/>
+                        </svg>
+                        Creative Interests
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">🎵 Recorder (Soloist & Composer)</span>
+                        <span class="skill-tag">🎻 Violin</span>
+                        <span class="skill-tag">🎹 Piano</span>
+                        <span class="skill-tag">🎼 Music Composition</span>
+                        <span class="skill-tag">🩰 Ballet</span>
+                        <span class="skill-tag">💃 Contemporary Dance</span>
+                        <span class="skill-tag">🏸 Badminton</span>
+                        <span class="skill-tag">🎤 Debate & Public Speaking</span>
+                        <span class="skill-tag">📸 Photography</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p style="font-size: 1.1rem;">Open to opportunities in engineering, innovation, and STEM education</p>
+            <div class="footer-links">
+                <a href="mailto:candyxie@nyu.edu">Get in Touch</a>
+                <span style="color: #ccc;">|</span>
+                <a href="https://linkedin.com/in/candy-xie" target="_blank">LinkedIn</a>
+                <span style="color: #ccc;">|</span>
+                <a href="https://github.com/candpixie" target="_blank">GitHub</a>
+                <span style="color: #ccc;">|</span>
+                <a href="photography.html">Photography</a>
+            </div>
+            <p style="font-size: 0.9rem; color: #999;">© 2025 Candy Xie. Made with 💖 and lots of coffee</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-top" id="scrollTop">
+        <svg width="24" height="24" viewBox="0 0 24 24">
+            <path d="M12 19V5M5 12l7-7 7 7" stroke="white" stroke-width="2" fill="none"/>
+        </svg>
+    </div>
+
+    <script>
+        // Generate floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    
+                    // Animate skill progress bars
+                    if (entry.target.querySelector('.progress-fill')) {
+                        entry.target.querySelectorAll('.skill-card').forEach(card => {
+                            card.classList.add('visible');
+                        });
+                    }
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Interactive header icon
+        const headerIcon = document.querySelector('.header-icon');
+        const emojis = ['👩‍💻', '🚀', '🎵', '🎨', '💡', '⚡', '🌟', '🎯'];
+        let emojiIndex = 0;
+
+        headerIcon.addEventListener('click', () => {
+            emojiIndex = (emojiIndex + 1) % emojis.length;
+            headerIcon.textContent = emojis[emojiIndex];
+            headerIcon.style.animation = 'none';
+            setTimeout(() => {
+                headerIcon.style.animation = 'slideInRight 0.8s ease-out, float-icon 3s ease-in-out infinite';
+            }, 10);
+        });
+
+        // Konami code easter egg (up up down down left right left right B A)
+        let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        let konamiIndex = 0;
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                if (konamiIndex === konamiCode.length) {
+                    document.body.classList.add('konami-activated');
+                    alert('🎉 Konami Code Activated! Rainbow mode enabled!');
+                    konamiIndex = 0;
+                }
+            } else {
+                konamiIndex = 0;
+            }
+        });
+
+        // Card click animation
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 100);
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
