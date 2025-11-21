@@ -18,13 +18,14 @@
         body {
             font-family: 'Instrument Serif', Georgia, serif;
             line-height: 1.6;
-            color: #4a4a4a;
-            background: linear-gradient(135deg, #fef1f5 0%, #f5f5f5 50%, #fef1f5 100%);
+            color: #3d3d3d;
+            background: linear-gradient(135deg, #FEDDE9 0%, #FEDDBE 50%, #FEDDE9 100%);
             min-height: 100vh;
         }
 
         .photo-header {
-            background: linear-gradient(135deg, rgba(255, 182, 217, 0.4) 0%, rgba(200, 200, 200, 0.4) 100%);
+            background: linear-gradient(135deg, rgba(225, 122, 172, 0.15) 0%, rgba(199, 112, 164, 0.15) 100%);
+            backdrop-filter: blur(10px);
             padding: 60px 24px;
             text-align: center;
             position: relative;
@@ -45,12 +46,8 @@
             font-family: 'Stardom', sans-serif;
             font-size: 3.5rem;
             font-weight: 700;
-            color: #333;
+            color: #C770A4;
             margin-bottom: 16px;
-            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
             position: relative;
             z-index: 1;
         }
@@ -70,7 +67,7 @@
             gap: 8px;
             padding: 12px 24px;
             background: rgba(255, 255, 255, 0.9);
-            color: #ff69b4;
+            color: #E17AAC;
             text-decoration: none;
             border-radius: 30px;
             font-weight: 500;
@@ -81,10 +78,10 @@
         }
 
         .back-btn:hover {
-            background: #ff69b4;
+            background: linear-gradient(135deg, #E17AAC 0%, #C770A4 100%);
             color: white;
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+            box-shadow: 0 6px 20px rgba(225, 122, 172, 0.4);
         }
 
         .filter-container {
@@ -99,9 +96,9 @@
             padding: 10px 24px;
             margin: 8px;
             background: rgba(255, 255, 255, 0.9);
-            border: 2px solid #ffb3d9;
+            border: 2px solid rgba(225, 122, 172, 0.3);
             border-radius: 25px;
-            color: #666;
+            color: #C770A4;
             cursor: pointer;
             transition: all 0.3s;
             font-weight: 500;
@@ -109,10 +106,11 @@
         }
 
         .filter-btn:hover, .filter-btn.active {
-            background: #ffb3d9;
+            background: linear-gradient(135deg, #E17AAC 0%, #C770A4 100%);
             color: white;
+            border-color: transparent;
             transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(255, 179, 217, 0.4);
+            box-shadow: 0 4px 15px rgba(225, 122, 172, 0.4);
         }
 
         .gallery-container {
@@ -139,7 +137,7 @@
 
         .photo-item:hover {
             transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 12px 30px rgba(255, 179, 217, 0.4);
+            box-shadow: 0 12px 30px rgba(225, 122, 172, 0.3);
         }
 
         .photo-item img {
@@ -186,7 +184,7 @@
             position: absolute;
             top: 12px;
             right: 12px;
-            background: rgba(255, 179, 217, 0.9);
+            background: linear-gradient(135deg, rgba(225, 122, 172, 0.95) 0%, rgba(199, 112, 164, 0.95) 100%);
             color: white;
             padding: 6px 14px;
             border-radius: 20px;
@@ -270,7 +268,7 @@
         }
 
         .lightbox-close:hover {
-            background: #ff69b4;
+            background: #E17AAC;
             transform: rotate(90deg);
         }
 
@@ -292,7 +290,7 @@
         }
 
         .lightbox-nav:hover {
-            background: #ff69b4;
+            background: #E17AAC;
             transform: translateY(-50%) scale(1.1);
         }
 
@@ -315,8 +313,8 @@
         }
 
         .spinner {
-            border: 4px solid rgba(255, 179, 217, 0.3);
-            border-top: 4px solid #ff69b4;
+            border: 4px solid rgba(225, 122, 172, 0.2);
+            border-top: 4px solid #E17AAC;
             border-radius: 50%;
             width: 50px;
             height: 50px;
